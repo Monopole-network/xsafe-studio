@@ -85,7 +85,7 @@ const AttachContractContent = ({ handleClose }: AttachContractContentProps) => {
             label={t('Contract address')}
             name="contractAddress"
             value={formik.values.contractAddress}
-            error={contractAddressError}
+            // error={contractAddressError}
             handleChange={formik.handleChange}
             handleBlur={formik.handleBlur}
             className={contractAddressError ? 'isError' : ''}

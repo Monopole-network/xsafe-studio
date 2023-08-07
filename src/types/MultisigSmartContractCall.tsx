@@ -32,6 +32,15 @@ import { ExternalContractFunction } from './ExternalContractFunction';
 import LendInJewelSwapPresentation from 'src/components/Proposals/LendInJewelSwapPresentation';
 import { DelegationFunctionNames } from './DelegationFunctionNames';
 
+const formatFunctionName = (functionName: string): string => {
+  const formattedString = functionName.replace(/([A-Z])/g, ' $1');
+
+  const firstLetterUppercase = formattedString.charAt(0).toUpperCase();
+  const restOfString = formattedString.slice(1);
+
+  return firstLetterUppercase + restOfString;
+}
+
 export class MultisigSmartContractCall extends MultisigAction {
   address: Address;
 
@@ -112,7 +121,7 @@ export class MultisigSmartContractCall extends MultisigAction {
       case ExternalContractFunction.LEND_IN_JEWELSWAP:
         return i18next.t('Lend in JewelSwap');
       default:
-        return 'Unknown function';
+        return formatFunctionName(this.functionName);
     }
   }
 

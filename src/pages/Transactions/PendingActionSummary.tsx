@@ -14,6 +14,8 @@ const PendingActionSummary = ({ action }: Props) => {
     quorumCountState: [quorumCount],
   } = useOrganizationInfoContext();
 
+  console.log(action);
+  
   const minWidth600 = useMediaQuery('(min-width: 600px)');
   return (
     <Styled.ActionSummaryContainer>
@@ -22,7 +24,7 @@ const PendingActionSummary = ({ action }: Props) => {
       </Styled.ActionIdBox>
 
       <Styled.ActionTitleBox>
-        <Text fontWeight={600}>{action?.title()}</Text>
+        <Text fontWeight={600} style={{ fontSize: '14px' }}>{action?.title()}</Text>
       </Styled.ActionTitleBox>
 
       <Styled.ActionSignersBox>
