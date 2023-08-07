@@ -1,4 +1,5 @@
+import { smartContractCode } from 'src/helpers/constants';
+
 export const requireContractCode = async () => {
-  const { smartContractCode } = await import('src/helpers/constants');
   return smartContractCode;
 };
