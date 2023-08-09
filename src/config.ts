@@ -6,7 +6,7 @@ export const walletConnectV2ProjectId = '4f2a173074e230a47805bddfa7ecd1ea';
 export const dAppName = 'xSafe';
 export const decimals = 2;
 export const denomination = 18;
-export const gasPrice = 1000000000;
+export const gasPrice = 100_000_000;
 export const version = 1;
 export const gasPriceModifier = '0.01';
 export const gasPerDataByte = '1500';
@@ -35,14 +35,14 @@ const networkSchema = object({
 export type NetworkType = InferType<typeof networkSchema>;
 
 export const network: NetworkType = {
-  id: 'mainnet',
-  name: 'Mainnet',
-  egldLabel: 'EGLD',
-  walletAddress: 'https://wallet.multiversx.com/dapp/init',
-  apiAddress: 'https://api.multiversx.com',
-  gatewayAddress: 'https://gateway.multiversx.com',
-  explorerAddress: 'http://explorer.multiversx.com',
-  storageApi: 'https://extras-api.multiversx.com',
+  id: 'testnet',
+  name: 'Testnet',
+  egldLabel: 'xEGLD',
+  walletAddress: 'https://testnet-wallet.multiversx.com/dapp/init',
+  apiAddress: 'https://testnet-api.multiversx.com',
+  gatewayAddress: 'https://testnet-gateway.multiversx.com',
+  explorerAddress: 'http://testnet-explorer.multiversx.com',
+  storageApi: 'https://testnet-extras-api.multiversx.com',
 };
 
 networkSchema.validate(network, { strict: true }).catch(({ errors }) => {
@@ -50,13 +50,3 @@ networkSchema.validate(network, { strict: true }).catch(({ errors }) => {
 });
 
 export const sampleAuthenticatedDomains = [network.storageApi];
-
-export const relatedBranch = 'master';
-
-export const xSafeApiUrl = 'https://api.xsafe.io';
-
-export const xSpotlightContractAddress =
-  'erd1qqqqqqqqqqqqqpgqra34kjj9zu6jvdldag72dyknnrh2ts9aj0wqp4acqh';
-
-export const jewelSwapLendingContractAddress =
-  'erd1qqqqqqqqqqqqqpgqhpauarfmx75nf4pwxh2fuy520ym03p8e8jcqt466up';
