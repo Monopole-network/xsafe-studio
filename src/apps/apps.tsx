@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import { RawTransactionType } from 'src/helpers/types';
 import { MultisigActionDetailed } from 'src/types/MultisigActionDetailed';
@@ -5,7 +6,9 @@ import { withInstallGuard } from './withInstallGuard';
 import { EnvironmentsEnum } from '@multiversx/sdk-dapp/types';
 import MoreAppsDark from 'src/assets/img/MoreAppsDark.png';
 import MoreAppsLight from 'src/assets/img/MoreAppsLight.png';
-import MonopoleStudio from './monopole-studio';
+import StudioEndpoints from './StudioEndpoints';
+import StudioQueries from './StudioQueries';
+import Staking from './Staking';
 
 export interface AppWithRouteConfig {
   component: React.ComponentType;
@@ -25,18 +28,46 @@ export interface AppWithRouteConfig {
 
 const commonApps = [
   {
-    name: 'Monopole Studio',
-    component: MonopoleStudio,
-    link: 'monopole-studio',
-    id: 'monopole-studio',
+    name: 'Studio Endpoints',
+    component: StudioEndpoints,
+    link: 'studio-endpoints',
+    id: 'studio-endpoints',
     description:
-      'Welcome to Monopole Studio',
+      'Welcome to Monopole Studio Endpoints',
     imageUrlLight: MoreAppsLight,
     imageUrlDark: MoreAppsDark,
     isInstallable: true,
     icon: <DiamondIcon />,
-    path: '/monopole-studio',
-    title: 'Monopole Studio',
+    path: '/studio-endpoints',
+    title: 'Studio Endpoints',
+  },
+  {
+    name: 'Studio Queries',
+    component: StudioQueries,
+    link: 'studio-queries',
+    id: 'studio-queries',
+    description:
+      'Welcome to Monopole Studio Queries',
+    imageUrlLight: MoreAppsLight,
+    imageUrlDark: MoreAppsDark,
+    isInstallable: true,
+    icon: <DiamondIcon />,
+    path: '/studio-queries',
+    title: 'Studio Queries',
+  },
+  {
+    name: 'Staking',
+    component: Staking,
+    link: 'staking',
+    id: 'staking',
+    description:
+      'Welcome to Monopole Staking',
+    imageUrlLight: MoreAppsLight,
+    imageUrlDark: MoreAppsDark,
+    isInstallable: true,
+    icon: <DiamondIcon />,
+    path: '/monopole-staking',
+    title: 'Monopole Staking',
   },
 ];
 
@@ -50,5 +81,5 @@ export const apps: AppWithRouteConfig[] =
 
 export const appsWithRouteConfig = apps.map((app) => ({
   ...app,
-  component: withInstallGuard(app.id, app.component),
+  component: memo(app.component),
 }));

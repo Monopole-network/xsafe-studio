@@ -12,11 +12,11 @@ import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { AppIdentifiers } from 'src/pages/Marketplace/appIds';
 import StakeAppThumbnail from 'src/assets/img/StakeAppThumbnail.png';
-import OtherAppThumbnailLight from 'src/assets/img/OtherAppThumbnailLight.png';
-import OtherAppThumbnailDark from 'src/assets/img/OtherAppThumbnailDark.png';
+// import OtherAppThumbnailLight from 'src/assets/img/OtherAppThumbnailLight.png';
+// import OtherAppThumbnailDark from 'src/assets/img/OtherAppThumbnailDark.png';
 import StakeAppThumbnailDark from 'src/assets/img/StakeAppThumbnailDark.png';
-import MoreAppsLight from 'src/assets/img/MoreAppsLight.png';
-import MoreAppsDark from 'src/assets/img/MoreAppsDark.png';
+// import MoreAppsLight from 'src/assets/img/MoreAppsLight.png';
+// import MoreAppsDark from 'src/assets/img/MoreAppsDark.png';
 import { appsWithRouteConfig } from 'src/apps/apps';
 import StakingIcon from 'src/assets/img/staking.svg';
 
@@ -52,17 +52,17 @@ export const preinstalledApps: MarketplaceApp[] = [
 ];
 
 export const availableApps: MarketplaceApp[] = [
-  {
-    name: 'Stake',
-    title: 'Stake',
-    link: 'stake',
-    id: AppIdentifiers.Staking,
-    description: 'Stake your tokens, secure the network and earn rewards.',
-    icon: <img src={StakingIcon} />,
-    imageUrlLight: StakeAppThumbnail,
-    imageUrlDark: StakeAppThumbnailDark,
-    isInstallable: true,
-  },
+  // {
+  //   name: 'Stake',
+  //   title: 'Stake',
+  //   link: 'stake',
+  //   id: AppIdentifiers.Staking,
+  //   description: 'Stake your tokens, secure the network and earn rewards.',
+  //   icon: <img src={StakingIcon} />,
+  //   imageUrlLight: StakeAppThumbnail,
+  //   imageUrlDark: StakeAppThumbnailDark,
+  //   isInstallable: true,
+  // },
 
   ...appsWithRouteConfig.map((app) => ({
     name: app.name,

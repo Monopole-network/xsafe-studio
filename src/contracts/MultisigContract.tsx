@@ -18,6 +18,7 @@ import {
 import BigNumber from '@multiversx/sdk-core/node_modules/bignumber.js';
 import { NumericalBinaryCodec } from '@multiversx/sdk-core/out/smartcontracts/codec/numerical';
 import {
+  AddressType,
   AddressValue,
   BigUIntValue,
   BooleanType,
@@ -131,6 +132,34 @@ export async function queryBoolean(
     .valueOf();
 }
 
+export async function queryBooleanOnContract(
+  functionName: string,
+  contractAddress: string,
+  ...args: TypedValue[]
+): Promise<boolean> {
+  const result = await queryOnContract(functionName, contractAddress, ...args);
+
+  const resultsParser = new ResultsParser();
+  const parsedResult = resultsParser.parseUntypedQueryResponse(result);
+  const codec = new BinaryCodec();
+  return codec
+    .decodeTopLevel<BooleanValue>(parsedResult.values[0], new BooleanType())
+    .valueOf();
+}
+
+export async function queryBooleanArrayOnContract(
+  functionName: string,
+  contractAddress: string,
+  ...args: TypedValue[]
+): Promise<boolean[]> {
+  const result = await queryOnContract(functionName, contractAddress, ...args);
+  const resultsParser = new ResultsParser();
+  const parsedResult = resultsParser.parseUntypedQueryResponse(result);
+  const codec = new BinaryCodec();
+  
+  return parsedResult.values.map((x: Buffer) => codec.decodeTopLevel<BooleanValue>(x, new BooleanType()).valueOf());
+}
+
 export async function queryAddressArray(
   functionName: string,
   ...args: TypedValue[]
@@ -139,6 +168,31 @@ export async function queryAddressArray(
   const resultsParser = new ResultsParser();
   const parsedResult = resultsParser.parseUntypedQueryResponse(result);
   return parsedResult.values.map((x: Buffer) => new Address(x));
+}
+
+export async function queryAddressArrayOnContract(
+  functionName: string,
+  contractAddress: string,
+  ...args: TypedValue[]
+): Promise<Address[]> {
+  const result = await queryOnContract(functionName, contractAddress, ...args);
+  const resultsParser = new ResultsParser();
+  const parsedResult = resultsParser.parseUntypedQueryResponse(result);
+  return parsedResult.values.map((x: Buffer) => new Address(x));
+}
+
+export async function queryAddressOnContract(
+  functionName: string,
+  contractAddress: string,
+  ...args: TypedValue[]
+): Promise<Address> {
+  const result = await queryOnContract(functionName, contractAddress, ...args);
+  const resultsParser = new ResultsParser();
+  const parsedResult = resultsParser.parseUntypedQueryResponse(result);
+  const codec = new BinaryCodec();
+  return codec
+    .decodeTopLevel<AddressValue>(parsedResult.values[0], new AddressType())
+    .valueOf();
 }
 
 export async function sendTransaction(
