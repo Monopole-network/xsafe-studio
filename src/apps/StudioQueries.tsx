@@ -1,8 +1,7 @@
 import { Box, useMediaQuery } from '@mui/material';
-import BigNumber from '@multiversx/sdk-core/node_modules/bignumber.js';
 import { Text } from 'src/components/StyledComponents/StyledComponents';
 import { MainButton } from 'src/components/Theme/StyledComponents';
-import { Address, AddressType, AddressValue, BigUIntValue, VariadicType, VariadicValue, BooleanValue, BytesValue, U32Value, U64Value } from '@multiversx/sdk-core/out';
+import { Address, AddressValue } from '@multiversx/sdk-core/out';
 import { Formik, Field, Form } from 'formik';
 import { queryAddressArrayOnContract, queryAddressOnContract, queryBooleanArrayOnContract, queryBooleanOnContract, queryNumberOnContract } from 'src/contracts/MultisigContract';
 import { useState } from 'react';

@@ -2,13 +2,12 @@ import { memo } from 'react';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import { RawTransactionType } from 'src/helpers/types';
 import { MultisigActionDetailed } from 'src/types/MultisigActionDetailed';
-import { withInstallGuard } from './withInstallGuard';
 import { EnvironmentsEnum } from '@multiversx/sdk-dapp/types';
 import MoreAppsDark from 'src/assets/img/MoreAppsDark.png';
 import MoreAppsLight from 'src/assets/img/MoreAppsLight.png';
 import StudioEndpoints from './StudioEndpoints';
 import StudioQueries from './StudioQueries';
-import Staking from './Staking';
+// import Staking from './Staking';
 
 export interface AppWithRouteConfig {
   component: React.ComponentType;
@@ -55,20 +54,20 @@ const commonApps = [
     path: '/studio-queries',
     title: 'Studio Queries',
   },
-  {
-    name: 'Staking',
-    component: Staking,
-    link: 'staking',
-    id: 'staking',
-    description:
-      'Welcome to Monopole Staking',
-    imageUrlLight: MoreAppsLight,
-    imageUrlDark: MoreAppsDark,
-    isInstallable: true,
-    icon: <DiamondIcon />,
-    path: '/monopole-staking',
-    title: 'Monopole Staking',
-  },
+  // {
+  //   name: 'Staking',
+  //   component: Staking,
+  //   link: 'staking',
+  //   id: 'staking',
+  //   description:
+  //     'Welcome to Monopole Staking',
+  //   imageUrlLight: MoreAppsLight,
+  //   imageUrlDark: MoreAppsDark,
+  //   isInstallable: true,
+  //   icon: <DiamondIcon />,
+  //   path: '/monopole-staking',
+  //   title: 'Monopole Staking',
+  // },
 ];
 
 export const apps: AppWithRouteConfig[] =
