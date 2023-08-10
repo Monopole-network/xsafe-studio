@@ -1,15 +1,15 @@
 import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
+import AppsIcon from '@mui/icons-material/Apps';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
-import AppsIcon from '@mui/icons-material/Apps';
 import DiamondIcon from '@mui/icons-material/Diamond';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HelpIcon from '@mui/icons-material/Help';
 import MapsHomeWorkRoundedIcon from '@mui/icons-material/MapsHomeWorkRounded';
 import PeopleIcon from '@mui/icons-material/People';
 import SettingsIcon from '@mui/icons-material/Settings';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
-import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { AppIdentifiers } from 'src/pages/Marketplace/appIds';
 import StakeAppThumbnail from 'src/assets/img/StakeAppThumbnail.png';
 // import OtherAppThumbnailLight from 'src/assets/img/OtherAppThumbnailLight.png';
@@ -18,7 +18,6 @@ import StakeAppThumbnailDark from 'src/assets/img/StakeAppThumbnailDark.png';
 // import MoreAppsLight from 'src/assets/img/MoreAppsLight.png';
 // import MoreAppsDark from 'src/assets/img/MoreAppsDark.png';
 import { appsWithRouteConfig } from 'src/apps/apps';
-import StakingIcon from 'src/assets/img/staking.svg';
 
 export type MenuItem = {
   name: string;
@@ -27,7 +26,6 @@ export type MenuItem = {
   description?: string;
   id: string;
   submenu?: MenuItem[];
-
 };
 
 export type MarketplaceApp = MenuItem & {
@@ -137,9 +135,7 @@ const topItems: MenuItem[] = [
     link: 'apps',
     id: 'apps-menu-item',
     icon: <AppsIcon />,
-    submenu: [
-      ...preinstalledApps,
-    ],
+    submenu: [...preinstalledApps],
   },
   {
     name: 'Organization',
@@ -219,9 +215,7 @@ const mobileBottomItems = [
     link: 'apps',
     id: 'apps-mobile-menu-item',
     icon: <AppsIcon />,
-    submenu: [
-      ...preinstalledApps,
-    ],
+    submenu: [...preinstalledApps],
   },
 ];
 
@@ -261,4 +255,10 @@ const mobileDropDownItems = [
   },
 ];
 
-export default { topItems, bottomItems, mobileBottomItems, availableApps, mobileDropDownItems };
+export default {
+  topItems,
+  bottomItems,
+  mobileBottomItems,
+  availableApps,
+  mobileDropDownItems,
+};
