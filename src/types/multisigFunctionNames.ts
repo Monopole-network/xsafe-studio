@@ -32,5 +32,6 @@ export enum MultisigContractFunction {
   REGISTER_MULTISIG_NAME = 'registerMultisigName',
   UNREGISTER_MULTISIG_CONTRACT = 'unregisterMultisigContract',
   GET_MULTISIG_CONTRACTS = 'getMultisigContracts',
-  GET_MULTISIG_CONTRACT_NAME = 'getMultisigContractName'
+  GET_MULTISIG_CONTRACT_NAME = 'getMultisigContractName',
+  DEPOSIT = 'deposit'
 }

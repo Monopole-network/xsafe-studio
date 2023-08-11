@@ -14,6 +14,7 @@ import {
   TokenTransfer,
   ResultsParser,
   Account,
+  Interaction,
 } from '@multiversx/sdk-core';
 import BigNumber from '@multiversx/sdk-core/node_modules/bignumber.js';
 import { NumericalBinaryCodec } from '@multiversx/sdk-core/out/smartcontracts/codec/numerical';
@@ -234,6 +235,87 @@ export async function sendTransaction(
     //   transactionGasLimit,
     //   ...args,
     // );
+
+    await refreshAccount();
+    const { sessionId } = await sendTransactions({
+      transactions: [transaction],
+      minGasLimit,
+      // skipGuardian: true,
+    });
+    store.dispatch(setCurrentMultisigTransactionId(sessionId));
+
+    console.log({ sessionId });
+    return sessionId;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function sendTransactionWithEgld(
+  functionName: MultisigContractFunction,
+  value: any,
+  ...args: TypedValue[]
+) {
+  try {
+    const currentMultisigAddress = currentMultisigAddressSelector(
+      store.getState(),
+    );
+
+    let contract = new SmartContract({ address: currentMultisigAddress });
+
+    const walletAddressBech32 = await getAddress();
+    const walletAddress = new Address(walletAddressBech32);
+
+    let interaction = new Interaction(contract, new ContractFunction(functionName), args);
+
+    let transaction = interaction
+    .withSender(walletAddress)
+    .withNonce(getLatestNonce(new Account(new Address(await getAddress()))))
+    .withValue(TokenTransfer.egldFromAmount(value))
+    .withGasLimit(gasLimit)
+    .withChainID(getChainID())
+    .buildTransaction();
+
+    await refreshAccount();
+    const { sessionId } = await sendTransactions({
+      transactions: [transaction],
+      minGasLimit,
+      // skipGuardian: true,
+    });
+    store.dispatch(setCurrentMultisigTransactionId(sessionId));
+
+    console.log({ sessionId });
+    return sessionId;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function sendTransactionWithEsdt(
+  functionName: MultisigContractFunction,
+  value: any,
+  ...args: TypedValue[]
+) {
+  try {
+    const currentMultisigAddress = currentMultisigAddressSelector(
+      store.getState(),
+    );
+
+    let contract = new SmartContract({ address: currentMultisigAddress });
+
+    const walletAddressBech32 = await getAddress();
+    const walletAddress = new Address(walletAddressBech32);
+
+    let interaction = new Interaction(contract, new ContractFunction(functionName), args);
+
+    let transaction = interaction
+    .withSender(walletAddress)
+    .withNonce(getLatestNonce(new Account(new Address(await getAddress()))))
+    .withGasLimit(gasLimit)
+    .withChainID(getChainID())
+    .withSingleESDTTransfer(value)
+    .buildTransaction();
+
 
     await refreshAccount();
     const { sessionId } = await sendTransactions({

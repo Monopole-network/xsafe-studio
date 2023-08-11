@@ -7,7 +7,7 @@ import MoreAppsDark from 'src/assets/img/MoreAppsDark.png';
 import MoreAppsLight from 'src/assets/img/MoreAppsLight.png';
 import StudioEndpoints from './StudioEndpoints';
 import StudioQueries from './StudioQueries';
-// import Staking from './Staking';
+import Staking from './Staking';
 
 export interface AppWithRouteConfig {
   component: React.ComponentType;
@@ -54,20 +54,20 @@ const commonApps = [
     path: '/studio-queries',
     title: 'Studio Queries',
   },
-  // {
-  //   name: 'Staking',
-  //   component: Staking,
-  //   link: 'staking',
-  //   id: 'staking',
-  //   description:
-  //     'Welcome to Monopole Staking',
-  //   imageUrlLight: MoreAppsLight,
-  //   imageUrlDark: MoreAppsDark,
-  //   isInstallable: true,
-  //   icon: <DiamondIcon />,
-  //   path: '/monopole-staking',
-  //   title: 'Monopole Staking',
-  // },
+  {
+    name: 'Staking',
+    component: Staking,
+    link: 'staking',
+    id: 'staking',
+    description:
+      'Welcome to Monopole Staking',
+    imageUrlLight: MoreAppsLight,
+    imageUrlDark: MoreAppsDark,
+    isInstallable: true,
+    icon: <DiamondIcon />,
+    path: '/staking',
+    title: 'Staking',
+  },
 ];
 
 export const apps: AppWithRouteConfig[] =
