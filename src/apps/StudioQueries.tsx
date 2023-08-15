@@ -51,7 +51,6 @@ const InteractStudio = () => {
         CONTRACT_ADDRESS,
         ...args
       );      
-      console.log(boolean);
       
       set(boolean ? "yes" : "no");
     } catch (e) {
@@ -66,7 +65,6 @@ const InteractStudio = () => {
         CONTRACT_ADDRESS,
         ...args
       );      
-      console.log(number);
       
       set(number);
     } catch (e) {
@@ -80,7 +78,6 @@ const InteractStudio = () => {
         endpoint,
         CONTRACT_ADDRESS,
       );      
-      console.log(array);
       const full = array.map((addr) => addr.bech32() + " ");
       const trimmed = array.map((addr) => " .." + addr.bech32().slice(-5));
       fn({full, trimmed})

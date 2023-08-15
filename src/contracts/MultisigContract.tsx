@@ -21,6 +21,7 @@ import { NumericalBinaryCodec } from '@multiversx/sdk-core/out/smartcontracts/co
 import {
   AddressType,
   AddressValue,
+  BigUIntType,
   BigUIntValue,
   BooleanType,
   BooleanValue,
@@ -115,6 +116,23 @@ export async function queryNumberOnContract(
   const parsedResult = resultsParser.parseUntypedQueryResponse(result);
   return codec
     .decodeTopLevel(parsedResult.values[0], new U32Type())
+    .valueOf()
+    .toNumber();
+}
+
+export async function queryBigUintOnContract(
+  functionName: string,
+  contractAddress: string,
+  ...args: TypedValue[]
+): Promise<number> {
+  if (!contractAddress) return Promise.resolve(-1);
+  const result = await queryOnContract(functionName, contractAddress, ...args);
+
+  const codec = new NumericalBinaryCodec();
+  const resultsParser = new ResultsParser();
+  const parsedResult = resultsParser.parseUntypedQueryResponse(result);
+  return codec
+    .decodeTopLevel(parsedResult.values[0], new BigUIntType())
     .valueOf()
     .toNumber();
 }

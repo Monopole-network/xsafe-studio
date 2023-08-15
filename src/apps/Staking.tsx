@@ -4,13 +4,20 @@ import { Text } from 'src/components/StyledComponents/StyledComponents';
 import { MainButton } from 'src/components/Theme/StyledComponents';
 import { Address, BigUIntValue, BytesValue, U64Value, TokenTransfer } from '@multiversx/sdk-core/out';
 import { Formik, Field, Form } from 'formik';
-import { mutateSmartContractCall, sendTransactionWithEgld, sendTransactionWithEsdt } from 'src/contracts/MultisigContract';
+import { mutateSmartContractCall, queryBigUintOnContract, queryNumberOnContract, sendTransactionWithEgld, sendTransactionWithEsdt } from 'src/contracts/MultisigContract';
 import { MultisigContractFunction } from 'src/types/multisigFunctionNames';
+import { useState } from 'react';
 
 const CONTRACT_ADDRESS = "erd1qqqqqqqqqqqqqpgq9e3ek5wlnsac8v88efnfx9wnj7w9cj7x9x2syzm46w";
 
 const InteractStudio = () => {
   const maxWidth600 = useMediaQuery('(max-width:600px)');
+  const [lastTime, setLastTime] = useState("");
+  const [finishAt, setFinishAt] = useState("");
+  const [updatedAt, setUpdatedAt] = useState("");
+  const [duration, setDuration] = useState("");
+  const [rewardRate, setRewardRate] = useState("");
+  const [totalSupply, setTotalSupply] = useState("");
 
   const handleSetDuration = async (duration: string) => {
     try {
@@ -57,6 +64,34 @@ const InteractStudio = () => {
         new BigUIntValue(new BigNumber(amount * Math.pow(10, 18))),
         "notifyRewardAmount",
       );
+    } catch (e) {
+      console.log({ e });
+    }
+  };
+
+  const handleQueryNumber = async (fn: string, set: any, args: any[]) => {
+    try {
+      const number = await queryNumberOnContract(
+        fn,
+        CONTRACT_ADDRESS,
+        ...args
+      );      
+      
+      set(number);
+    } catch (e) {
+      console.log({ e });
+    }
+  };
+
+  const handleQueryBigUint = async (fn: string, set: any, args: any[]) => {
+    try {
+      const number = await queryBigUintOnContract(
+        fn,
+        CONTRACT_ADDRESS,
+        ...args
+      );      
+      
+      set(number);
     } catch (e) {
       console.log({ e });
     }
@@ -125,6 +160,33 @@ const InteractStudio = () => {
                 )}
               </Formik>
             </Box>
+            <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" height="100%" width="30%">
+              <Text fontSize="1.5rem" fontWeight={700}>Queries</Text>
+              <MainButton onClick={() => handleQueryBigUint("rewardRate", setRewardRate, [])}>
+                  Get reward rate
+              </MainButton>
+              <Text fontSize="1.1rem">{rewardRate}</Text>
+              <MainButton onClick={() => handleQueryBigUint("totalSupply", setTotalSupply, [])}>
+                  Get total supply
+              </MainButton>
+              <Text fontSize="1.1rem">{totalSupply}</Text>
+              <MainButton onClick={() => handleQueryNumber("getLastTimeRewardApplicable", setLastTime, [])}>
+                  Get last time reward applicable
+              </MainButton>
+              <Text fontSize="1.1rem">{lastTime}</Text>
+              <MainButton onClick={() => handleQueryNumber("finishAt", setFinishAt, [])}>
+                  Get finish at
+              </MainButton>
+              <Text fontSize="1.1rem">{finishAt}</Text>
+              <MainButton onClick={() => handleQueryNumber("updatedAt", setUpdatedAt, [])}>
+                  Get updated at 
+              </MainButton>
+              <Text fontSize="1.1rem">{updatedAt}</Text>
+              <MainButton onClick={() => handleQueryNumber("duration", setDuration, [])}>
+                  Get duration
+              </MainButton>
+              <Text fontSize="1.1rem">{duration}</Text>
+          </Box>
         </Box>
       </Box>
     </Box>
