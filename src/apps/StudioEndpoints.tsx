@@ -364,12 +364,12 @@ const InteractStudio = () => {
               </Formik>
               <Formik
                 initialValues={{addr: '', new_owner: ''}}
-                onSubmit={(values) => handleSubmit("createSftNonceOnChildContract", [new AddressValue(new Address(values.addr.trim())), new AddressValue(new Address(values.new_owner.trim()))])}
+                onSubmit={(values) => handleSubmit("changeOwner", [new AddressValue(new Address(values.addr.trim())), new AddressValue(new Address(values.new_owner.trim()))])}
               >
                 {({ isSubmitting }) => (
                   <Form>
                     <Box sx={{ padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <Field name="addr" placeholder="sale contract address" />
+                    <Field name="addr" placeholder="contract address" />
                     <Field name="new_owner" placeholder="new owner" />
                     <MainButton  type="submit" disabled={isSubmitting}>
                       change contract owner
