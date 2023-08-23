@@ -138,7 +138,7 @@ const InteractStudio = () => {
                     <Box sx={{ padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                     <Field name="addr" placeholder="erd1..." />
                     <MainButton  type="submit" disabled={isSubmitting}>
-                      Batch Add To Allowlist (separate with comma or space)
+                      Batch Add To Allowlist <br />(separate with comma or space)
                     </MainButton>
                     </Box>
                   </Form>
@@ -164,7 +164,7 @@ const InteractStudio = () => {
                     <Box sx={{ padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                     <Field name="addr" placeholder="erd1..." />
                     <MainButton  type="submit" disabled={isSubmitting}>
-                      Batch Remove From Allowlist (separate with comma or space)
+                      Batch Remove From Allowlist <br />(separate with comma or space)
                     </MainButton>
                     </Box>
                   </Form>

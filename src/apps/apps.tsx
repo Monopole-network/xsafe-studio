@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import DiamondIcon from '@mui/icons-material/Diamond';
+import { FileDownloadDone, Upload, Download } from '@mui/icons-material';
 import { RawTransactionType } from 'src/helpers/types';
 import { MultisigActionDetailed } from 'src/types/MultisigActionDetailed';
 import { EnvironmentsEnum } from '@multiversx/sdk-dapp/types';
 import MoreAppsDark from 'src/assets/img/MoreAppsDark.png';
 import MoreAppsLight from 'src/assets/img/MoreAppsLight.png';
-import StudioEndpoints from './StudioEndpoints';
+import StudioCalls from './StudioCalls';
 import StudioQueries from './StudioQueries';
 import Staking from './Staking';
 
@@ -27,30 +27,28 @@ export interface AppWithRouteConfig {
 
 const commonApps = [
   {
-    name: 'Studio Endpoints',
-    component: StudioEndpoints,
-    link: 'studio-endpoints',
-    id: 'studio-endpoints',
-    description:
-      'Welcome to Monopole Studio Endpoints',
+    name: 'Call Studio',
+    component: StudioCalls,
+    link: 'studio-calls',
+    id: 'studio-calls',
+    description:'',
     imageUrlLight: MoreAppsLight,
     imageUrlDark: MoreAppsDark,
     isInstallable: true,
-    icon: <DiamondIcon />,
-    path: '/studio-endpoints',
-    title: 'Studio Endpoints',
+    icon: <Upload />,
+    path: '/studio-calls',
+    title: 'Studio Calls',
   },
   {
-    name: 'Studio Queries',
+    name: 'Query Studio',
     component: StudioQueries,
     link: 'studio-queries',
     id: 'studio-queries',
-    description:
-      'Welcome to Monopole Studio Queries',
+    description:'',
     imageUrlLight: MoreAppsLight,
     imageUrlDark: MoreAppsDark,
     isInstallable: true,
-    icon: <DiamondIcon />,
+    icon: <Download />,
     path: '/studio-queries',
     title: 'Studio Queries',
   },
@@ -64,7 +62,7 @@ const commonApps = [
     imageUrlLight: MoreAppsLight,
     imageUrlDark: MoreAppsDark,
     isInstallable: true,
-    icon: <DiamondIcon />,
+    icon: <FileDownloadDone />,
     path: '/staking',
     title: 'Staking',
   },
