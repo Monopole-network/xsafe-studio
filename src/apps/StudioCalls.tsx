@@ -12,7 +12,7 @@ const InteractStudio = () => {
   const handleSubmit = async (fn: string, args: any[]) => {
     try {
       await mutateSmartContractCall(
-        new Address("erd1qqqqqqqqqqqqqpgqsmddxe7vzf0pm0m69sm5hkjfttx7xh0c9x2swpz84h"),
+        new Address("erd1qqqqqqqqqqqqqpgqnu5858phhprzknl9j9x7tul43hl257s69x2swkmmn4"),
         new BigUIntValue(0),
         fn,
         ...args

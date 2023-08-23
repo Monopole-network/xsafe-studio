@@ -6,7 +6,7 @@ import { Formik, Field, Form } from 'formik';
 import { queryAddressArrayOnContract, queryAddressOnContract, queryBooleanArrayOnContract, queryBooleanOnContract, queryNumberOnContract } from 'src/contracts/MultisigContract';
 import { useState } from 'react';
 
-const CONTRACT_ADDRESS = "erd1qqqqqqqqqqqqqpgqsmddxe7vzf0pm0m69sm5hkjfttx7xh0c9x2swpz84h";
+const CONTRACT_ADDRESS = "erd1qqqqqqqqqqqqqpgqnu5858phhprzknl9j9x7tul43hl257s69x2swkmmn4";
 
 const InteractStudio = () => {
   const maxWidth600 = useMediaQuery('(max-width:600px)');

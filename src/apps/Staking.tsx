@@ -8,7 +8,7 @@ import { mutateSmartContractCall, queryBigUintOnContract, queryNumberOnContract,
 import { MultisigContractFunction } from 'src/types/multisigFunctionNames';
 import { useState } from 'react';
 
-const CONTRACT_ADDRESS = "erd1qqqqqqqqqqqqqpgq9e3ek5wlnsac8v88efnfx9wnj7w9cj7x9x2syzm46w";
+const CONTRACT_ADDRESS = "erd1qqqqqqqqqqqqqpgq7x3xhdyee69sfdxvr4tt7eqhz7wqnr549x2s4swvaa";
 
 const InteractStudio = () => {
   const maxWidth600 = useMediaQuery('(max-width:600px)');
