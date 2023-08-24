@@ -98,12 +98,7 @@ export const App = () => (
                     dappConfig={{
                       shouldUseWebViewProvider: true,
                     }}
-                    environment={
-                      import.meta.env.VITE_MVX_ENVIRONMENT ===
-                      EnvironmentsEnum.mainnet
-                        ? EnvironmentsEnum.mainnet
-                        : EnvironmentsEnum.devnet
-                    }
+                    environment={import.meta.env.VITE_MVX_ENVIRONMENT}
                   >
                     <>
                       <SpotlightCommands />
