@@ -24,7 +24,6 @@ import {
   NotificationModal,
 } from '@multiversx/sdk-dapp/UI';
 import i18next from 'i18next';
-import { EnvironmentsEnum } from '@multiversx/sdk-dapp/types';
 import { Suspense } from 'react';
 import { englishTranslations } from './i18n/en';
 import { germanTranslations } from './i18n/de';
