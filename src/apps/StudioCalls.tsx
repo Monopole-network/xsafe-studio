@@ -73,21 +73,9 @@ const InteractStudio = () => {
                   </Form>
                 )}
               </Formik>
-              <Formik
-                initialValues={{addr: ''}}
-                onSubmit={() => handleSubmit("clearAllowlist", [])}
-              >
-                {({ isSubmitting }) => (
-                  <Form>
-                    <Box sx={{ padding: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <Field name="addr" placeholder="erd1..." />
-                    <MainButton  type="submit" disabled={isSubmitting}>
-                      Clear Allowlist
-                    </MainButton>
-                    </Box>
-                  </Form>
-                )}
-              </Formik>
+              <MainButton onClick={() => handleSubmit("clearAllowlist", [])}>
+                Clear Allowlist
+              </MainButton>
               <Formik
                 initialValues={{addr: ''}}
                 onSubmit={(values) => handleSubmit("addToAllowlist", [new AddressValue(new Address(values.addr.trim()))])}
