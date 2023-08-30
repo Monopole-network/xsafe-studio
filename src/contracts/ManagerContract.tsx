@@ -29,7 +29,7 @@ export async function deployMultisigContract() {
     const address = await getAddress();
     const contract = new SmartContract({});
     const code = Code.fromBuffer(Buffer.from(smartContractCode, 'hex'));
-    const codeMetadata = new CodeMetadata(false, true, true, true);
+    const codeMetadata = new CodeMetadata(true, true, true, true);
     const quorumTyped = new U8Value(quorum);
     const initArguments: TypedValue[] = [quorumTyped, ...boardMembers];
     const value = TokenTransfer.egldFromAmount(0);
